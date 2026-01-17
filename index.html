@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Nosotros 💜</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header id="login">
+        <div class="login-container">
+            <div class="login-step active" data-step="0">
+                <h1>Hola 👀</h1>
+                <p>Esta experiencia es solo para una persona especial.</p>
+                <input type="text" id="user-input" placeholder="Ingresá tu nombre..." autocomplete="off" />
+                <br />
+                <button id="btn-login">Entrar</button>
+                <p id="login-error"></p>
+            </div>
+
+            <div class="login-step" data-step="1">
+                <h1>Hola Dani ❤️, bienvenida a esta aventura...</h1>
+                <p>Tengo algo que decirte.</p>
+                <p class="hint">(Haz clic para continuar)</p>
+            </div>
+
+           <div class="login-step" data-step="2">
+                <h1></h1>
+                <p>Hice todo esto porque sos alguien muy especial.</p>
+                <p class="hint">🥰❤️</p>
+            </div>
+
+            <div class="login-step" data-step="3">
+                <p>Como Xayah y Rakan, somos un equipo imparable.</p>
+                <p>Pero en este dúo, nada es gratis...</p>
+                <p class="hint">(Sigue...)</p>
+            </div>
+
+            <div class="login-step" data-step="4">
+                <p>Primero vas a tener que superar unas pruebas.<br>¿Estás lista?</p>
+                <button id="start-game">¡Empezar Desafío!</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="game-content" style="display: none">
+        <section id="nivel-1">
+            <div class="game-card">
+                <h2>Misión 1: Sintonía</h2>
+                <p>Somos uno para el otro. Empareja los recuerdos.</p>
+                <div id="tablero-memoria" class="grid-memoria"></div>
+                <button id="btn-continuar-1" class="hidden">¡Prueba superada! Siguiente</button>
+            </div>
+        </section>
+
+        <section id="intermedio-1" class="text-slide">
+            <p>"No importa cuántos enemigos haya, si estás conmigo, no hay miedo."</p>
+            <button onclick="irANivel(2)">Siguiente Misión</button>
+        </section>
+
+        <section id="nivel-2" style="display: none;">
+    <div class="game-card">
+        <h2>Misión 2: El Vínculo</h2>
+        <div id="quiz-container">
+            <p id="quiz-pregunta" style="font-size: 1.2rem; margin-bottom: 20px;"></p>
+            <div id="quiz-opciones" class="quiz-grid"></div>
+        </div>
+        <p id="quiz-feedback" style="margin-top: 15px; font-weight: bold;"></p>
+    </div>
+</section>
+
+        <section id="intermedio-2" class="text-slide">
+            <p>Facilito el tutorial, o no?...</p>
+            <button onclick="irANivel(3)">Último paso</button>
+        </section>
+
+        <section id="nivel-3" style="display: none;">
+            <div class="game-card">
+                <h2>Misión 3: El Amuleto</h2>
+                <p>Así quiero que encajen nuestras vidas. <br> Une las plumas para revelar el final.</p>
+                
+                <div id="drop-zone" class="drop-zone">
+                    <span>Van acá</span>
+                </div>
+
+                <div id="plumas-container" class="plumas-flex">
+                    <div class="feather xayah" draggable="true" id="p1"></div>
+                    <div class="feather rakan" draggable="true" id="p2"></div>
+                    <div class="feather xayah" draggable="true" id="p3"></div>
+                </div>
+            </div>
+        </section>
+
+<section id="final" style="display: none;">
+    <div class="final-container">
+        <div class="final-step active" data-fstep="1">
+            <h2 class="glow-text">¡Lo lograste! ❤️</h2>
+            <p>Pasaste todas las pruebas, demostrando que somos el mejor equipo.</p>
+            <p class="hint">(Haz clic para continuar)</p>
+        </div>
+
+        <div class="final-step" data-fstep="2">
+            <p>Como Xakan, nuestras plumas vuelan juntas en la misma dirección.</p>
+            <p>Y aunque esto empezó como un juego...</p>
+        </div>
+
+        <div class="final-step" data-fstep="3">
+            <p>Quiero que sepas</p>
+            <p>Que me haces muy feliz.</p>
+        </div>
+
+        <div class="final-step" data-fstep="4">
+            <p>Nunca me reí, como lo hago contigo.</p>
+            <p></p>
+        </div>
+
+        <div class="final-step" data-fstep="5">
+            <p>Y a pesar de la distancia.</p>
+            <p>Te siento muy cercana.</p>
+        </div>
+
+        <div class="final-step" data-fstep="6">
+            <h2 class="pregunta-final">¿Quieres ser mi Duo en la vida real y oficialmente? ❤️</h2>
+            <div class="final-buttons">
+                <button id="si-btn">¡SÍ! 😍</button>
+                <button id="no-btn">No 😭</button>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <div id="reproductor-flotante" class="hidden">
+        <iframe src="https://open.spotify.com/embed/track/TU_ID_AQUI" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

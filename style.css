@@ -1,0 +1,378 @@
+/* Paleta de colores:
+   - Fondo: Negro profundo (#0a0a0a)
+   - Acento Principal: Morado Xayah (#6a0dad)
+   - Acento Secundario: Rojo Rakan (#b22222)
+   - Detalles: Dorado Amarillo (#ffd700) 
+*/
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Gradiente radial para que el centro sea un poco más claro (efecto aura) */
+  background: radial-gradient(circle, #1a0a1f 0%, #0a0a0a 100%);
+  color: #f5f5f5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Contenedor principal para darle un borde elegante */
+.login-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid #6a0dad; /* Borde morado */
+    box-shadow: 0 0 20px rgba(106, 13, 173, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.login-step {
+  display: none;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.login-step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: #ffd700; /* Dorado para los títulos */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Inputs y botones con estilo Xayah/Rakan */
+input {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 2px solid #6a0dad;
+  background: #1a1a1a;
+  color: white;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ffd700; /* Brilla en dorado al escribir */
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg, #6a0dad, #b22222); /* Mezcla Xayah y Rakan */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(178, 34, 34, 0.6);
+}
+
+/* Estilo para los minijuegos (secciones ocultas) */
+section {
+  display: none;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Animación de error personalizada */
+#login-error {
+  color: #ff4d6d;
+  font-weight: bold;
+  margin-top: 15px;
+  opacity: 0;
+}
+
+#login-error.error-active {
+  opacity: 1;
+  animation: shake 0.35s ease;
+}
+
+/* Estilos para que el tablero de memoria sea visible */
+.grid-memoria {
+    display: grid;
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.card {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #6a0dad, #2a054d); /* Morado Xayah */
+    border: 2px solid #ffd700; /* Dorado */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    color: transparent; /* Esconde el emoji */
+    transition: transform 0.4s, background 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.card.flipped {
+    background: #b22222; /* Rojo Rakan */
+    color: white; /* Muestra el emoji */
+    transform: rotateY(180deg);
+}
+
+.hidden {
+    display: none;
+}
+
+/* juego 2 */
+.quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.quiz-btn {
+    background: rgba(106, 13, 173, 0.2);
+    border: 2px solid #6a0dad;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quiz-btn:hover {
+    background: #6a0dad;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.4);
+}
+
+/* tercer juego */
+.drop-zone {
+    width: 200px;
+    height: 200px;
+    border: 3px dashed #ffd700;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.1);
+    transition: 0.3s;
+}
+
+.plumas-flex {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pluma {
+    font-size: 3rem;
+    cursor: grab;
+    filter: drop-shadow(0 0 5px #6a0dad);
+}
+
+.pluma:active { cursor: grabbing; }
+
+.glow-text {
+    color: #ffd700;
+    text-shadow: 0 0 20px #b22222;
+    font-size: 2.5rem;
+}
+
+.final-container {
+    padding: 2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.feather {
+    width: 30px;
+    height: 80px;
+    border-radius: 50% 50% 10% 10%; /* Forma de pluma */
+    cursor: grab;
+    transition: transform 0.2s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Pluma de Xayah (Morada) */
+.feather.xayah {
+    background: linear-gradient(to bottom, #6a0dad, #2a054d);
+    border-left: 3px solid #ffd700;
+}
+
+/* Pluma de Rakan (Roja) */
+.feather.rakan {
+    background: linear-gradient(to bottom, #b22222, #5e0000);
+    border-right: 3px solid #ffd700;
+}
+
+.feather:active {
+    cursor: grabbing;
+    transform: scale(1.1) rotate(10deg);
+}
+
+.drop-zone {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 50px auto;
+    position: relative;
+    transform: rotate(-45deg); /* Base para formar el corazón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    cursor: default;
+}
+
+/* Las "orejas" del corazón */
+.drop-zone::before,
+.drop-zone::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s ease;
+}
+
+.drop-zone::before { top: -50px; left: 0; }
+.drop-zone::after { left: 50px; top: 0; }
+
+/* El texto dentro (hay que rotarlo de vuelta para que se lea recto) */
+.drop-zone span {
+    transform: rotate(45deg);
+    color: white;
+    font-size: 0.8rem;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* CUANDO SE LLENA */
+.corazon-lleno {
+    background-color: #ff69b4 !important; /* Rosa */
+    animation: latido 0.8s infinite alternate;
+}
+
+.corazon-lleno::before,
+.corazon-lleno::after {
+    background-color: #ff69b4 !important;
+}
+
+@keyframes latido {
+    to { transform: rotate(-45deg) scale(1.1); }
+}
+
+/* Animación del brillo mágico */
+@keyframes magic-glow {
+    0% { 
+        box-shadow: 0 0 10px #ffd700, inset 0 0 10px #ffd700;
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px #ffd700, inset 0 0 20px #ffd700;
+        transform: scale(1.05);
+        background: rgba(255, 215, 0, 0.4);
+    }
+    100% { 
+        box-shadow: 0 0 10px #ffd700, inset 0 0 10px #ffd700;
+        transform: scale(1);
+    }
+}
+
+/* Clase que aplicaremos por JS al terminar */
+.fusion-activa {
+    animation: magic-glow 0.8s ease-in-out infinite;
+    border-style: solid !important;
+    background: rgba(255, 215, 0, 0.2);
+}
+
+/* FINAL */
+.final-step {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    animation: fadeIn 0.8s ease;
+}
+
+.final-step.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.final-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Contenedor de la lluvia */
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Para que no bloquee los clics en los botones */
+    z-index: 1; /* Por detrás de los textos */
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    top: -50px;
+    font-size: 1.5rem;
+    user-select: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
